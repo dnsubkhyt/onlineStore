@@ -82,7 +82,7 @@ Welcome to the My Library API System! This is a Node.js-based application that m
 └── package-lock.json        # Dependency lock file
 ```
 
------------------------
+
 ## Setup and Installation
 
 ### Prerequisites
@@ -98,8 +98,9 @@ To run this project, you need the following:
 *   **Heroku account** (for deployment)
 
     
----------------------------
+
 ### Installation
+
 1.  Clone the repository to your local machine:
     
 ```bash
@@ -119,6 +120,8 @@ MONGO\_URI=your-mongodb-atlas-connection-string
 
 API\_KEY=your-openweathermap-api-key
 ```
+
+
 ### Setting Up MongoDB Atlas
 
 Heroku doesn’t have access to local MongoDB instances, so you need to use **MongoDB Atlas** to create a remote database.
@@ -128,6 +131,7 @@ Heroku doesn’t have access to local MongoDB instances, so you need to use **Mo
 3.  Once your cluster is created, set the IP address to "0.0.0.0/0" to allow connections from anywhere.
 4.  Create a new database and a user for it.   
 5.  Copy the **MongoDB connection string** from the Atlas dashboard and replace the password placeholder with the password you set for the database user.
+
 
 
 ### Setting Environment Variables
@@ -143,13 +147,16 @@ API_KEY=your-weather-api-key
 *   Replace `your-weather-api-key` with your OpenWeatherMap API key [https://openweathermap.org/api].    
 
 
+
 ### Running the Application Locally
+
 1.  Start the application locally:   
 ```bash
 node app.js
 ```
 2.  Your app will now be available at `http://localhost:8080`
 *   Replace the port if needed.
+
 
   
 ### Deploying the Application to Heroku
@@ -161,6 +168,8 @@ node app.js
 ```bash
 heroku login
 ```
+
+
 #### Step 2: Create a New Heroku App**
 
 1.  In your terminal, navigate to your project directory:
@@ -172,6 +181,7 @@ cd path/to/your/project
 heroku create your-custom-app-name
 ```
 
+
 #### Step 3: Set Environment Variables on Heroku**
 
 Set your MongoDB connection string and weather API key asenvironment variables on Heroku:
@@ -181,6 +191,8 @@ heroku config:set MONGODB_URI=your-mongodb-atlas-connection-string –app app\_n
 
 heroku config:set API_KEY=your-openweathermap-api-key –app app\_name
 ```
+
+
 #### Step 4: Push Your Code to Heroku**
 
 1.  Add the Heroku remote repository:  
@@ -192,6 +204,8 @@ git remote add heroku https://git.heroku.com/your-custom-app-name.git
 ```bash
 git push heroku main
 ```
+
+
 #### Step 5: Open Your App**
 
 After deployment, open your app using the following command:
@@ -200,7 +214,7 @@ heroku open
 ```
 You can also visit it directly at https://your-custom-app-name.herokuapp.com.
 
-------------------------
+
 ### Testing the API**
 
 #### Book Endpoints**
@@ -213,11 +227,11 @@ You can also visit it directly at https://your-custom-app-name.herokuapp.com.
     
 *   **DELETE /my-library-api-system/library/book/:id** Delete a book by its ID.
 
+
 #### Weather Endpoints**
 
 *   **GET /my-library-api-system/weather/:city** Get the weather details of a specific city. For example, GET /my-library-api-system/weather/New York will return the weather for New York.
 
-------------------------------
 
 ### Error Handling**
 
@@ -231,7 +245,7 @@ Example error for weather:
 }
 ```
 
-------------------------
+
 ### Conclusion**
 
 This application allows you to manage a book collection andget weather data for any city. The app is fully deployed on Heroku, and data isstored in MongoDB Atlas. To test it, follow the provided API endpoints and usetools like Postman or Insomnia for interacting with the API.
