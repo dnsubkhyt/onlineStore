@@ -9,15 +9,13 @@ const weatherRoutes = require('./routes/weatherRoutes')
 app.use(express.static('public'))
 
 
-app.get('/', (req, res) => {
-  res.status(200).send({
-    message: 'You successfully connected.'
-  })
+app.get('/my-library-api-system', (req, res) => {
+  res.send('Welcome to My Library API!');
 })
 
 app.use(express.json());
-app.use('/book/library',bookRoutes)
-app.use('/weather', weatherRoutes)
+app.use('/my-library-api-system/library/book',bookRoutes)
+app.use('/my-library-api-system/weather', weatherRoutes)
 
 const port = process.env.PORT || 8080
 
