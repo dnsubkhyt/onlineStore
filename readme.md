@@ -2,7 +2,7 @@
 
 Welcome to the My Library API System! This is a Node.js-based application that manages a library of books and integrates weather data from an external API.
 
-## Table of Contents**
+## Table of Contents
 
 *   Technologies Used
     
@@ -170,7 +170,7 @@ heroku login
 ```
 
 
-#### Step 2: Create a New Heroku App**
+#### Step 2: Create a New Heroku App
 
 1.  In your terminal, navigate to your project directory:
 ```bash
@@ -182,7 +182,7 @@ heroku create your-custom-app-name
 ```
 
 
-#### Step 3: Set Environment Variables on Heroku**
+#### Step 3: Set Environment Variables on Heroku
 
 Set your MongoDB connection string and weather API key asenvironment variables on Heroku:
 
@@ -193,7 +193,7 @@ heroku config:set API_KEY=your-openweathermap-api-key –app app\_name
 ```
 
 
-#### Step 4: Push Your Code to Heroku**
+#### Step 4: Push Your Code to Heroku
 
 1.  Add the Heroku remote repository:  
 ```bash
@@ -206,7 +206,7 @@ git push heroku main
 ```
 
 
-#### Step 5: Open Your App**
+#### Step 5: Open Your App
 
 After deployment, open your app using the following command:
 ```bash
@@ -215,9 +215,9 @@ heroku open
 You can also visit it directly at https://your-custom-app-name.herokuapp.com.
 
 
-### Testing the API**
+## Testing the API
 
-#### Book Endpoints**
+### Book Endpoints
 
 *   **GET /my-library-api-system/library/book** Fetch all books from the library.
 
@@ -228,12 +228,12 @@ You can also visit it directly at https://your-custom-app-name.herokuapp.com.
 *   **DELETE /my-library-api-system/library/book/:id** Delete a book by its ID.
 
 
-#### Weather Endpoints**
+### Weather Endpoints
 
 *   **GET /my-library-api-system/weather/:city** Get the weather details of a specific city. For example, GET /my-library-api-system/weather/New York will return the weather for New York.
 
 
-### Error Handling**
+## Error Handling
 
 If there are any errors, such as invalid book IDs or failedweather API calls, the application will return an appropriate error messagewith an HTTP status code.
 
@@ -246,7 +246,7 @@ Example error for weather:
 ```
 
 
-### Conclusion**
+## Conclusion
 
 This application allows you to manage a book collection andget weather data for any city. The app is fully deployed on Heroku, and data isstored in MongoDB Atlas. To test it, follow the provided API endpoints and usetools like Postman or Insomnia for interacting with the API.
 
