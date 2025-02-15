@@ -96,78 +96,64 @@ To run this project, you need the following:
     
 
 *   **Heroku account** (for deployment)
+
     
 
 **Installation**
-
-2.  Clone the repository to your local machine:
+1.  Clone the repository to your local machine:
     
 ```bash
-git clonehttps://github.com/your-username/my-library-api.git
+git clone https://github.com/your-username/my-library-api.git
+
 cd my-library-api
 ```
 2.  Install the required dependencies: 
 
 ```bash
-npm install
+npm install _package-name
 ```
-3.  Create a .env file in the root of the project to store your environment variables (e.g., MongoDB connection string, weather API key). Here’s an example of what it might look like:
+3.  Create a `.env` file in the root of the project to store your environment variables (e.g., MongoDB connection string, weather API key). Here’s an example of what it might look like:
 
 ```env
 MONGO\_URI=your-mongodb-atlas-connection-string
+
 API\_KEY=your-openweathermap-api-key
 ```
+
 **Setting Up MongoDB Atlas**
+Heroku doesn’t have access to local MongoDB instances, so you need to use **MongoDB Atlas** to create a remote database.
 
-Heroku doesn’t have access to local MongoDB instances, soyou need to use **MongoDB Atlas** to create a remote database.
+1.  Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create an account or log in.   
+2.  Follow the instructions to create a new cluster (you can select the free tier).   
+3.  Once your cluster is created, set the IP address to "0.0.0.0/0" to allow connections from anywhere.
+4.  Create a new database and a user for it.   
+5.  Copy the **MongoDB connection string** from the Atlas dashboard and replace the password placeholder with the password you set for the database user.
 
-2.  Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create an account or log in.
-    
-
-4.  Follow the instructions to create a new cluster (you can select the free tier).
-    
-
-6.  Once your cluster is created, set the IP address to "0.0.0.0/0" to allow connections from anywhere.
-    
-
-8.  Create a new database and a user for it.
-    
-
-10.  Copy the **MongoDB connection string** from the Atlas dashboard and replace the password placeholder with the password you set for the database user.
-    
 
 **Setting Environment Variables**
-
-Create a .env file in the root directory of your project,and add the following values:
+Create a `.env` file in the root directory of your project,and add the following values:
 
 ```env
 MONGO\_URI=mongodb+srv://:@cluster0.mongodb.net/myDatabase?retryWrites=true&w=majority
 API\_KEY=your-weather-api-key
 ```
 *   Replace `username` and `password` with the credentials for your MongoDB Atlas database.
-    
+*   Replace `your-weather-api-key` with your OpenWeatherMap API key [https://openweathermap.org/api].    
 
-*   Replace `your-weather-api-key` with your OpenWeatherMap API key.
-    
 
 **Running the Application Locally**
-
 1.  Start the application locally:   
-
 ```bash
 node app.js
 ```
-2.  Your app will now be available at ```http://localhost:8080.
-    
-
+2.  Your app will now be available at `http://localhost:8080`
+   
 **Deploying the Application to Heroku**
 
 **Step 1: Install Heroku CLI**
 
 1.  Download and install the Heroku CLI.
-    
 2.  After installation, log in to your Heroku account:
-
 ```bash
 heroku login
 ```
@@ -192,9 +178,8 @@ heroku config:set API\_KEY=your-openweathermap-api-key –app app\_name
 **Step 4: Push Your Code to Heroku**
 
 1.  Add the Heroku remote repository:  
-
 ```bash
-git remote add herokuhttps://git.heroku.com/your-custom-app-name.git
+git remote add heroku https://git.heroku.com/your-custom-app-name.git
 ```
 2.  Push your code to Heroku: 
 
@@ -204,7 +189,6 @@ git push heroku main
 **Step 5: Open Your App**
 
 After deployment, open your app using the following command:
-
 ```bash
 heroku open
 ```
@@ -215,16 +199,12 @@ You can also visit it directly at https://your-custom-app-name.herokuapp.com.
 **Book Endpoints**
 
 *   **GET /my-library-api-system/library/book** Fetch all books from the library.
-    
 
 *   **POST /my-library-api-system/library/book** Add a new book to the library (body must contain title, author, year, and genre).
-    
 
 *   **PUT /my-library-api-system/library/book/:id** Update the details of a specific book by its ID.
     
-
 *   **DELETE /my-library-api-system/library/book/:id** Delete a book by its ID.
-    
 
 **Weather Endpoints**
 
