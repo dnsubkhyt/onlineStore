@@ -14,7 +14,7 @@ app.get('/my-library-api-system', (req, res) => {
 })
 
 app.use(express.json());
-app.use('/my-library-api-system/library/book',bookRoutes)
+app.use('/my-library-api-system/library',bookRoutes)
 app.use('/my-library-api-system/weather', weatherRoutes)
 
 const port = process.env.PORT || 8080
