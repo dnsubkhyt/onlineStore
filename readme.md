@@ -238,7 +238,7 @@ Example error for weather:
 
 ```error
 {
-    "Errorfetching the weather data"
+    "Error fetching the weather data"
 }
 ```
 
