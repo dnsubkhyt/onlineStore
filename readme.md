@@ -86,26 +86,43 @@ To run this project, you need the following:
 
 ### Installation
 
-1.  Clone the repository to your local machine:
-    
+1.  Navigate to your project folder:
+
 ```bash
-git clone https://github.com/your-username/my-library-api.git
-
-cd my-library-api
+cd path/to/your/project-folder
 ```
-2.  Install the required dependencies: 
+2.  Initialize a new Git repository:
 
+```bash
+git init
+```
+3.  Add your remote repository:
+```bash
+git remote add origin https://github.com/your-username/my-library-api.git
+```
+4.  Add all files to the staging area:
+```bash
+git add .
+```
+5.  Commit the files:
+
+```bash
+git commit -m "Initial commit"
+```
+6. Push to the remote repository:
+```bash
+git push -u origin main
+```
+7.  Install the required dependencies: 
 ```bash
 npm install _package-name
 ```
-3.  Create a `.env` file in the root of the project to store your environment variables (e.g., MongoDB connection string, weather API key). Here’s an example of what it might look like:
-
+8.  Create a `.env` file in the root of the project to store your environment variables (e.g., MongoDB connection string, weather API key). Here’s an example of what it might look like:
 ```env
 MONGO\_URI=your-mongodb-atlas-connection-string
 
 API\_KEY=your-openweathermap-api-key
 ```
-
 
 ### Setting Up MongoDB Atlas
 
