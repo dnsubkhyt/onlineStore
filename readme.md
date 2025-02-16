@@ -1,6 +1,6 @@
 # My Library API System
 
-Welcome to the My Library API System! This is a Node.js-based application that manages a library of books and integrates weather data from an external API.
+Welcome to the My Online Store API System! This is a Node.js-based application that let user login/signup, place orders and create products .
 
 ## Table of Contents
 
@@ -26,13 +26,17 @@ Welcome to the My Library API System! This is a Node.js-based application that m
 
 *   **Express**: Web framework for building the API.
 
-*   **MongoDB**: NoSQL database for storing book data.
+*   **Mongoose**: A MongoDB object modeling tool for Node.js, which provides a straight-forward way to interact with your MongoDB database.
     
 *   **Axios**: HTTP client for making requests to the weather API.
     
 *   **Joi**: Data validation library.
 
 *   **dotenv**: Loads environment variables from a .env file.
+
+*   **Bcrypt**: A library to hash passwords for secure storage.
+
+*   **Nodemon**:  A development tool that monitors your Node.js application for changes and automatically restarts the server, saving you time.
     
 ## Project Structure
 
@@ -47,19 +51,27 @@ Welcome to the My Library API System! This is a Node.js-based application that m
 
 ├── controllers
 
-│   ├── bookController.js     #Book CRUD logic
+│   ├── productController.js     #Product CRUD logic
 
-│   └──weatherController.js  # Weather API logic
+|   ├── userController.js        #User CRUD logic
+
+│   └── transactionController.js  #Placing Transaction logic
 
 ├── models
 
-│   └──bookModel.js          # Mongoose schemafor Book
+|   ├── productModel.js          # Mongoose schema for products 
+
+|   ├── userModel.js            # Mongoose schema for users
+
+│   └── transactionModel.js          # Mongoose schema for transactions
 
 ├── routes
 
-│   ├── bookRoutes.js         #Routes for book API
+│   ├── userRoutes.js            # Routes for user API
 
-│   └──weatherRoutes.js      # Routes forweather API
+│   ├── productRoutes.js         # Routes for product API
+
+│   └── transactionRoutes.js      # Routes for transaction API
 
 ├── .env                      # Environment variables
 
@@ -78,7 +90,7 @@ To run this project, you need the following:
 *   **Node.js** (Recommended: version 18.x.x or later)
     
 
-*   **MongoDB Atlas account** (for a remote database)
+*   **MongoDB Compass** (for a local database)
     
 
 *   **Heroku account** (for deployment)
@@ -98,7 +110,7 @@ git init
 ```
 3.  Add your remote repository:
 ```bash
-git remote add origin https://github.com/your-username/my-library-api.git
+git remote add origin https://github.com/your-username/onlineStore.git
 ```
 4.  Add all files to the staging area:
 ```bash
@@ -119,40 +131,54 @@ npm install _package-name
 ```
 8.  Create a `.env` file in the root of the project to store your environment variables (e.g., MongoDB connection string, weather API key). Here’s an example of what it might look like:
 ```env
-MONGO\_URI=your-mongodb-atlas-connection-string
+MONGO\_URI=your-mongodbCompass-connection-string
 
 API\_KEY=your-openweathermap-api-key
 ```
 
-### Setting Up MongoDB Atlas
+### Setting Up MongoDB Compass
 
 Heroku doesn’t have access to local MongoDB instances, so you need to use **MongoDB Atlas** to create a remote database.
 
-1.  Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create an account or log in.   
-2.  Follow the instructions to create a new cluster (you can select the free tier).   
-3.  Once your cluster is created, set the IP address to "0.0.0.0/0" to allow connections from anywhere.
-4.  Create a new database and a user for it.   
-5.  Copy the **MongoDB connection string** from the Atlas dashboard and replace the password placeholder with the password you set for the database user.
+1. Go to [MongoDB Compass]([https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/try/download/compass)) and download and install it.   
+- Once installed, open MongoDB Compass on your local machine.
 
-
+2. Connecting to MongoDB with Compass   
+- If you're using a local MongoDB instance (on your machine), the default connection string would be:
+```bash
+mongodb://localhost:27017
+```
+3.  Set Up Your Connection in Compass:
+- Open MongoDB Compass.
+- Click on New Connection.
+- For a local MongoDB instance, use:
+```bash
+mongodb://localhost:27017
+```
+4.  Create a Database and Collection:
+- Once connected, you will be able to see the database interface.
+- You can create a new database or use an existing one.
+- After selecting the database, create a new collection (e.g., `products`, `users`, `transactions`).
+5.  Start Working with Your Data:
+- With Compass, you can add documents, run queries, and explore your MongoDB database graphically.
+- You can use the GUI to insert data, perform CRUD operations, or run MongoDB queries.
 
 ### Setting Environment Variables
 
 Create a `.env` file in the root directory of your project,and add the following values:
 
 ```env
-MONGODB_URI="your-mongodbAtlas-string-connection-key"
-
-API_KEY=your-weather-api-key
+MONGO_URI=mongodb://localhost:27017/mydatabase
+JWT_SECRET=mysecretkey
+PORT=5000
 ```
-*   Replace `your-weather-api-key` with your OpenWeatherMap API key [https://openweathermap.org/api].    
-
+* Replace mydatabase and port number with your credentials
 
 ### Running the Application Locally
 
 1.  Start the application locally:   
 ```bash
-node app.js
+nodemon app.js
 ```
 2.  Your app will now be available at `http://localhost:8080`
 *   Replace the port if needed.
@@ -212,22 +238,96 @@ heroku open
 You can also visit it directly at https://your-custom-app-name.herokuapp.com.
 
 
-## Testing the API
 
-### Book Endpoints
+# API Endpoints Documentation
 
-*   **GET /my-library-api-system/library/book** Fetch all books from the library.
+## Product Endpoints
 
-*   **POST /my-library-api-system/library/book** Add a new book to the library (body must contain title, author, year, and genre).
+- **POST /add**
+  - **Description**: Add a new product to the library.
+  - **Request Body**:
+    ```json
+    {
+      "name": "Product Name",
+      "price": 99.99,
+      "stock": 10,
+      "category": ["Electronics"],
+      "description": "Detailed product description"
+    }
+    ```
+  - **Response**: The added product's details.
 
-*   **PUT /my-library-api-system/library/book/:id** Update the details of a specific book by its ID.
-    
-*   **DELETE /my-library-api-system/library/book/:id** Delete a book by its ID.
+- **GET /getProducts**
+  - **Description**: Fetch all products from the library.
+  - **Response**: A list of all products in the library.
 
+- **PUT /update/:id**
+  - **Description**: Update a specific product by its ID.
+  - **Request Body**:
+    ```json
+    {
+      "name": "Updated Product Name",
+      "price": 89.99,
+      "stock": 15,
+      "category": ["Electronics"],
+      "description": "Updated product description"
+    }
+    ```
+  - **Response**: The updated product's details.
 
-### Weather Endpoints
+---
 
-*   **GET /my-library-api-system/weather/:city** Get the weather details of a specific city. For example, GET /my-library-api-system/weather/New York will return the weather for New York.
+## Transaction Endpoints
+
+- **POST /placeOrder**
+  - **Description**: Create a new transaction (place an order).
+  - **Request Body**:
+    ```json
+    {
+      "userId": "user_id_here",
+      "productId": "product_id_here",
+      "quantity": 2
+    }
+    ```
+  - **Response**: A confirmation message with the order details.
+
+---
+
+## User Endpoints
+
+- **POST /signup**
+  - **Description**: Register a new user.
+  - **Request Body**:
+    ```json
+    {
+      "name": "User Name",
+      "email": "user@example.com",
+      "password": "password123",
+      "address": "123 User St."
+    }
+    ```
+  - **Response**: Confirmation message for successful registration.
+
+- **POST /login**
+  - **Description**: Log in an existing user.
+  - **Request Body**:
+    ```json
+    {
+      "email": "user@example.com",
+      "password": "password123"
+    }
+    ```
+  - **Response**: Login success message and token.
+
+- **GET /me**
+  - **Description**: Get the logged-in user's information.
+  - **Response**: The user's information (name, email, address, etc.).
+
+- **DELETE /me**
+  - **Description**: Delete the logged-in user's account.
+  - **Response**: Confirmation message that the account was deleted.
+
+---
 
 
 ## Error Handling
