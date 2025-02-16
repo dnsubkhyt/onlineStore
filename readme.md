@@ -330,7 +330,7 @@ Example error for transaction creation (e.g., insufficient stock):
 {
     "message": "Not enough stock available"
 }
-
+```
 
 ### Conclusion
 
