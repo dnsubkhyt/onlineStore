@@ -22,21 +22,21 @@ Welcome to the My Online Store API System! This is a Node.js-based application t
   
 ## Technologies Used
 
-*   **Node.js**: JavaScript runtime for building the backend.
+*   **node.js**: JavaScript runtime for building the backend.
 
-*   **Express**: Web framework for building the API.
+*   **express**: Web framework for building the API.
 
-*   **Mongoose**: A MongoDB object modeling tool for Node.js, which provides a straight-forward way to interact with your MongoDB database.
+*   **mongoose**: A MongoDB object modeling tool for Node.js, which provides a straight-forward way to interact with your MongoDB database.
     
-*   **Axios**: HTTP client for making requests to the weather API.
+*   **axios**: HTTP client for making requests to the weather API.
     
-*   **Joi**: Data validation library.
+*   **joi**: Data validation library.
 
 *   **dotenv**: Loads environment variables from a .env file.
 
-*   **Bcrypt**: A library to hash passwords for secure storage.
+*   **bcrypt**: A library to hash passwords for secure storage.
 
-*   **Nodemon**:  A development tool that monitors your Node.js application for changes and automatically restarts the server, saving you time.
+*   **nodemon**:  A development tool that monitors your Node.js application for changes and automatically restarts the server, saving you time.
     
 ## Project Structure
 
@@ -129,37 +129,31 @@ git push -u origin main
 ```bash
 npm install _package-name
 ```
-8.  Create a `.env` file in the root of the project to store your environment variables (e.g., MongoDB connection string, weather API key). Here’s an example of what it might look like:
-```env
-MONGO\_URI=your-mongodbCompass-connection-string
-
-API\_KEY=your-openweathermap-api-key
-```
 
 ### Setting Up MongoDB Compass
 
 Heroku doesn’t have access to local MongoDB instances, so you need to use **MongoDB Atlas** to create a remote database.
 
-1. Go to [MongoDB Compass]([https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/try/download/compass)) and download and install it.   
+1. #### Go to [MongoDB Compass]([https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/try/download/compass)) and download and install it.   
 - Once installed, open MongoDB Compass on your local machine.
 
-2. Connecting to MongoDB with Compass   
+2. #### Connecting to MongoDB with Compass   
 - If you're using a local MongoDB instance (on your machine), the default connection string would be:
 ```bash
 mongodb://localhost:27017
 ```
-3.  Set Up Your Connection in Compass:
+3.  #### Set Up Your Connection in Compass:
 - Open MongoDB Compass.
 - Click on New Connection.
 - For a local MongoDB instance, use:
 ```bash
 mongodb://localhost:27017
 ```
-4.  Create a Database and Collection:
+4.  #### Create a Database and Collection:
 - Once connected, you will be able to see the database interface.
 - You can create a new database or use an existing one.
 - After selecting the database, create a new collection (e.g., `products`, `users`, `transactions`).
-5.  Start Working with Your Data:
+5.  #### Start Working with Your Data:
 - With Compass, you can add documents, run queries, and explore your MongoDB database graphically.
 - You can use the GUI to insert data, perform CRUD operations, or run MongoDB queries.
 
@@ -176,11 +170,11 @@ PORT=5000
 
 ### Running the Application Locally
 
-1.  Start the application locally:   
+1.  #### Start the application locally:   
 ```bash
 nodemon app.js
 ```
-2.  Your app will now be available at `http://localhost:8080`
+2.  #### Your app will now be available at `http://localhost:8080`
 *   Replace the port if needed.
 
 
@@ -188,8 +182,8 @@ nodemon app.js
 
 #### Step 1: Install Heroku CLI
 
-1.  Download and install the Heroku CLI.
-2.  After installation, log in to your Heroku account:
+1.  #### Download and install the Heroku CLI.
+2.  #### After installation, log in to your Heroku account:
 ```bash
 heroku login
 ```
@@ -197,11 +191,11 @@ heroku login
 
 #### Step 2: Create a New Heroku App
 
-1.  In your terminal, navigate to your project directory:
+1. ####  In your terminal, navigate to your project directory:
 ```bash
 cd path/to/your/project
 ```
-2.  Create a new Heroku app with a custom name:
+2.  #### Create a new Heroku app with a custom name:
 ```bash
 heroku create your-custom-app-name
 ```
@@ -218,11 +212,11 @@ heroku config:set API_KEY=your-openweathermap-api-key –app app\_name
 
 #### Step 4: Push Your Code to Heroku
 
-1.  Add the Heroku remote repository:  
+1. ####  Add the Heroku remote repository:  
 ```bash
 git remote add heroku https://git.heroku.com/your-custom-app-name.git
 ```
-2.  Push your code to Heroku: 
+2. #### Push your code to Heroku: 
 
 ```bash
 git push heroku main
