@@ -322,15 +322,14 @@ You can also visit it directly at https://your-custom-app-name.herokuapp.com.
 
 ### Error Handling
 
-If there are any errors, such as invalid book IDs or failedweather API calls, the application will return an appropriate error messagewith an HTTP status code.
+If there are any errors, such as invalid product IDs, insufficient stock, or failed transactions, the application will return an appropriate error message with an HTTP status code.
 
-Example error for weather:
+Example error for transaction creation (e.g., insufficient stock):
 
-```error
+```json
 {
-    "Error fetching the weather data"
+    "message": "Not enough stock available"
 }
-```
 
 
 ### Conclusion
