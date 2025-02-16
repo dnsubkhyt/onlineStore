@@ -1,4 +1,4 @@
-# My Library API System
+# My Online Store API System
 
 Welcome to the My Online Store API System! This is a Node.js-based application that let user login/signup, place orders and create products .
 
