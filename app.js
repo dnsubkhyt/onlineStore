@@ -2,20 +2,19 @@ const express = require('express');
 const app = express();
 require('dotenv').config()
 const axios = require('axios')
-const mongoose = require('./config/mongoose');
-const bookRoutes = require('./routes/bookRoutes')
-const weatherRoutes = require('./routes/weatherRoutes')
-
-app.use(express.static('public'))
-
+require('./config/mongoose');
+const userRoutes = require('./routes/userRoutes')
+const productRoutes = require('./routes/productRoutes')
+const transactionRoutes = require('./routes/transactionRoutes')
 
 app.get('/', (req, res) => {
-  res.send('Welcome to My Library API!');
+  res.send('Welcome to My Online Store API!');
 })
 
 app.use(express.json());
-app.use('/library',bookRoutes)
-app.use('/weather', weatherRoutes)
+app.use('/user',userRoutes)
+app.use('/product',productRoutes)
+app.use('/transaction', transactionRoutes)
 
 const port = process.env.PORT || 8080
 
